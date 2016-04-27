@@ -1,7 +1,7 @@
 # Importing upstream changes
 
 This document describes how to import changes from upstream repo
-(https://github.com/JetBrains/jdk8u*.git). Before doing these, you need `forge-author`,
+(https://github.com/JetBrains/jdk8u\*.git). Before doing these, you need `forge-author`,
 `forge-committer` and `direct-push` permissions for the relevant projects in
 `jetbrains-master-mirror` and `jetbrains-master-mirror-osx` branches.
 
@@ -26,7 +26,7 @@ should be available for both branches.
 
 ```bash
 repo init -u https://android-googlesource.com/platform/manifest -b openjdk
-repo sync -j8  # Do not use '-c' here
+repo sync  # Do not use '-c' here
 ```
 
 - Create a script called `merge.sh` with the following contents and grant it execute permissions:
@@ -99,3 +99,6 @@ question from repo.
 - To build mac binaries, checkout the project and sync (don't use the '-c' flag when syncing).
 - Checkout the mac branch: `repo forall -c git checkout aosp/studio-master-dev-osx`.
 - You can now build the mac binaries.
+- To build from the internal tree, checkout the tree in the same way as aosp.
+- For mac binaries run the following after checking out the tree
+  `repo forall -c git checkout goog/mirror-studio-master-dev-osx`
