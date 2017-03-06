@@ -25,7 +25,7 @@ should be available for both branches.
 - Get the sources by cloning the repo
 
 ```bash
-repo init -u https://android-googlesource.com/platform/manifest -b openjdk
+repo init -u persistent-https://googleplex-android.git.corp.google.com/platform/manifest -b openjdk
 repo sync  # Do not use '-c' here
 ```
 
