@@ -7,7 +7,7 @@
         <key>CFBundleExecutable</key>
         <string>libjli.dylib</string>
         <key>CFBundleGetInfoString</key>
-        <string>OpenJDK (1.8.0_112)</string>
+        <string>OpenJDK (1.8.0_152)</string>
         <key>CFBundleIdentifier</key>
         <string>net.java.openjdk.jdk</string>
         <key>CFBundleInfoDictionaryVersion</key>
@@ -21,7 +21,7 @@
         <key>CFBundleSignature</key>
         <string>????</string>
         <key>CFBundleVersion</key>
-        <string>1.8.0_112</string>
+        <string>1.8.0_152</string>
         <key>JavaVM</key>
         <dict>
                 <key>JVMCapabilities</key>
@@ -37,7 +37,7 @@
                 <key>JVMVendor</key>
                 <string>UNDEFINED</string>
                 <key>JVMVersion</key>
-                <string>1.8.0_112</string>
+                <string>1.8.0_152</string>
         </dict>
 </dict>
 </plist>
