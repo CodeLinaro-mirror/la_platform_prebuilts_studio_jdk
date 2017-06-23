@@ -11,6 +11,10 @@ cc_library(
     srcs = [],
     hdrs = select({
         "//tools/base/bazel:darwin": glob(["mac/Contents/Home/include/**/*.h"]),
+        "//tools/base/bazel:android_cpu_x86": [],
+        "//tools/base/bazel:android_cpu_x86_64": [],
+        "//tools/base/bazel:android_cpu_arm": [],
+        "//tools/base/bazel:android_cpu_arm_64": [],
         "//conditions:default": glob(["linux/include/**/*.h"]),
     }),
     includes = select({
@@ -18,9 +22,20 @@ cc_library(
             "mac/Contents/Home/include",
             "mac/Contents/Home/include/darwin",
         ],
+        "//tools/base/bazel:android_cpu_x86": [],
+        "//tools/base/bazel:android_cpu_x86_64": [],
+        "//tools/base/bazel:android_cpu_arm": [],
+        "//tools/base/bazel:android_cpu_arm_64": [],
         "//conditions:default": [
             "linux/include",
             "linux/include/linux",
-        ]
-    })
+        ],
+    }),
+    deps = select({
+        "//tools/base/bazel:android_cpu_x86": ["//tools/vendor/google/android-ndk:jvmti"],
+        "//tools/base/bazel:android_cpu_x86_64": ["//tools/vendor/google/android-ndk:jvmti"],
+        "//tools/base/bazel:android_cpu_arm": ["//tools/vendor/google/android-ndk:jvmti"],
+        "//tools/base/bazel:android_cpu_arm_64": ["//tools/vendor/google/android-ndk:jvmti"],
+        "//conditions:default": [],
+    }),
 )
