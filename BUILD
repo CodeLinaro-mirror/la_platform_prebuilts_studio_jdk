@@ -39,3 +39,17 @@ cc_library(
         "//conditions:default": [],
     }),
 )
+
+java_runtime(
+    name = "jdk_runtime",
+    srcs = select({
+        "//tools/base/bazel:darwin": glob(["mac/**"]),
+        "//tools/base/bazel:windows": glob(["win64/**"]),
+        "//conditions:default": glob(["linux/**"]),
+    }),
+    java_home = select({
+        "//tools/base/bazel:darwin": "mac/Contents/Home",
+        "//tools/base/bazel:windows": "win64",
+        "//conditions:default": "linux",
+    }),
+)
