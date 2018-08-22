@@ -5,6 +5,24 @@ filegroup(
     srcs = glob(["**"]),
 )
 
+filegroup(
+    name = "langtools",
+    srcs = select({
+        "//tools/base/bazel:darwin": [
+            "mac/Contents/Home/jre/lib/jce.jar",
+            "mac/Contents/Home/lib/tools.jar",
+        ],
+        "//tools/base/bazel:windows": [
+            "win64/jre/lib/jce.jar",
+            "win64/lib/tools.jar",
+        ],
+        "//conditions:default": [
+            "linux/jre/lib/jce.jar",
+            "linux/lib/tools.jar",
+        ],
+    }),
+)
+
 # Nothing should depend on this library on windows.
 cc_library(
     name = "jni_headers",
