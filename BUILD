@@ -23,6 +23,24 @@ filegroup(
     }),
 )
 
+filegroup(
+    name = "bootclasspath",
+    srcs = select({
+        "//tools/base/bazel:darwin": glob([
+            "mac/Contents/Home/jre/lib/*.jar",
+            "mac/Contents/Home/jre/lib/ext/*.jar",
+        ]),
+        "//tools/base/bazel:windows": glob([
+            "win32/jre/lib/*.jar",
+            "win32/jre/lib/ext/*.jar",
+        ]),
+        "//conditions:default": glob([
+            "linux/jre/lib/*.jar",
+            "linux/jre/lib/ext/*.jar",
+        ]),
+    }),
+)
+
 # Nothing should depend on this library on windows.
 cc_library(
     name = "jni_headers",
